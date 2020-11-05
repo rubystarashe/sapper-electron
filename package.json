@@ -1,0 +1,62 @@
+{
+  "name": "sapper-electron",
+  "description": "sapper + electron example",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "ELECTRON=true sapper dev",
+    "start": "npm run sapper-export && electron .",
+    "pack": "npm run sapper-export && electron-builder --dir",
+    "dist": "npm run sapper-export && electron-builder",
+    "rebuild": "./node_modules/.bin/electron-rebuild",
+    "sass-rebuild": "./node_modules/.bin/electron-rebuild -o node-sass && node sass-rebuild",
+    "sapper-dev": "sapper dev",
+    "sapper-build": "sapper build --legacy",
+    "sapper-export": "sapper export --legacy",
+    "sapper-start": "node __sapper__/build"
+  },
+  "dependencies": {
+    "compression": "^1.7.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.12.1",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "@rollup/plugin-url": "^5.0.0",
+    "electron": "^10.1.5",
+    "electron-builder": "^22.9.1",
+    "electron-rebuild": "^2.3.2",
+    "electron-reload": "^1.5.0",
+    "polka": "next",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "sapper": "^0.28.0",
+    "sirv": "^1.0.0",
+    "svelte": "^3.17.3"
+  },
+  "build": {
+    "appId": "com.exam.exam-electron",
+    "mac": {
+      "category": "public.app-category.graphics-design"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "files": [
+      "**/*",
+      {
+        "from": "__sapper__/export",
+        "to": "web"
+      }
+    ]
+  }
+}
