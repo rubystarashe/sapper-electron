@@ -1,13 +1,12 @@
 <script>
 	import successkid from 'images/successkid.jpg';
 	import { onMount } from 'svelte';
-	const electron = require('electron')
 	onMount(async () => {
-		electron.ipcRenderer.on('pong', (error, message) => alert(message))
+		window.electron.ipcRenderer.on('pong', (error, message) => alert(message))
 	})
 
 	function handleClick () {
-		electron.ipcRenderer.send('ping', 'Hello World!')
+		window.electron.ipcRenderer.send('ping', 'Hello World!')
 	}
 </script>
 
