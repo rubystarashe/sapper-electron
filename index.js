@@ -41,7 +41,8 @@ require('./ipc')(app)
 const createMainWindow = () => {
   app.windows.mainWindow = new BrowserWindow({
     webPreferences: {
-      preload: path.join(app.getAppPath(), 'preload.js')
+      preload: path.join(app.getAppPath(), 'preload.js'),
+      enableRemoteModule: false
     },
     width: 800,
     height: 600,
